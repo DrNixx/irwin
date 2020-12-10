@@ -23,7 +23,7 @@ class Api(namedtuple('Api', ['url', 'token'])):
                     return True
                 else:
                     logging.warning(str(response.status_code) + ': Failed to post player report')
-                    logging.warning(json.dumps(reportDict))
+                    logging.warning(f'Report size: {len(json.dumps(reportDict))}')
                     if response.status_code == 413:
                         return False
                     logging.debug('Trying again in 60 sec')
