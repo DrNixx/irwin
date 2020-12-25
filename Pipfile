@@ -7,11 +7,13 @@ name = "pypi"
 flask = "*"
 numpy = "*"
 pymongo = "*"
-python-chess = "*"
-keras = "*"
+python-chess = "==0.23.10"
+Keras = "==2.3.1"
 requests = "*"
-tensorflow = "*"
+tensorflow = "==1.15.4"
+h5py = "==2.10.0"
 
 [dev-packages]
 
 [requires]
+python_version = "3.7"
