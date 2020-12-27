@@ -47,8 +47,8 @@ Possible messages that lichess will emit
 
 def handleLine(payload: Dict):
     request = Request.fromJson(payload)
-    playerId = request.player.id
     if request is not None:
+        playerId = request.player.id
         logging.info(f'Processing request for {request.player}')
         # store user
         env.gameApi.writePlayer(request.player)
@@ -84,6 +84,8 @@ while True:
         for line in r.iter_lines():
             try:
                 payload = json.loads(line.decode("utf-8"))
+                if payload.get('keepAlive', False): # ignore keepalive commands
+                    continue
                 handleLine(payload)
             except json.decoder.JSONDecodeError:
                 logging.warning(f"Failed to decode: {line.text}")
