@@ -8,12 +8,12 @@ flask = "*"
 numpy = "*"
 pymongo = "*"
 python-chess = "==0.23.10"
-Keras = "==2.3.1"
+Keras = "==2.2.2"
 requests = "*"
-tensorflow = "==1.15.4"
+tensorflow = "==1.10.1"
 h5py = "==2.10.0"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
