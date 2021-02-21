@@ -19,6 +19,7 @@ def buildApiBlueprint(env):
         logging.debug(f'EngineQueue for req {engineQueue}')
         if engineQueue is not None:
             requiredGames = env.gameApi.gamesForAnalysis(engineQueue.id, engineQueue.requiredGameIds)
+            requiredGames = requiredGames[:50]
             requiredGameIds = [g.id for g in requiredGames]
 
             logging.warning(f'Requesting {authable.name} analyses {requiredGameIds} for {engineQueue.id}')
