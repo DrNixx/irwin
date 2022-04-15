@@ -84,7 +84,7 @@ class BasicGameModel:
 
     def predict(self, playerId: PlayerID, games: List[Game]) -> Opt[int]:
         tensors = [game.tensor(playerId) for game in games]
-        return [None if t is None else int(100*self.model.predict([np.array([t[0]]),np.array([t[1]])])[0][0]) for t in tensors]
+        return [0 if t is None else int(100*self.model.predict([np.array([t[0]]),np.array([t[1]])])[0][0]) for t in tensors]
 
     def saveModel(self):
         logging.debug("saving model")
