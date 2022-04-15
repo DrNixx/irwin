@@ -36,7 +36,7 @@ class Game(NamedTuple('Game', [
             black=d['black'],
             pgn=d['pgn'].split(' '),
             emts=d['emts'],
-            analysis=None if d.get('analysis') is None else [EngineEval.fromDict(a) for a in d['analysis']]
+            analysis=[] if d.get('analysis') is None else [EngineEval.fromDict(a) for a in d['analysis']]
             )
 
     @staticmethod
@@ -114,7 +114,7 @@ class Game(NamedTuple('Game', [
 
         colour = (self.white == playerId)
 
-        analysis = self.analysis[1:] if colour else self.analysis
+        analysis = self.analysis[1:] if colour and self.analysis else self.analysis
         analysis = list(zip(analysis[0::2],analysis[1::2])) # grouping analyses pairwise
 
         emts = self.emtsByColour(colour, [-1 for _ in self.analysis] if self.emts is None else self.emts)
